@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mntcr.git/static/css/main.b78e5153.css",
+    "main.js": "/mntcr.git/static/js/main.f8981b34.js",
+    "index.html": "/mntcr.git/index.html",
+    "main.b78e5153.css.map": "/mntcr.git/static/css/main.b78e5153.css.map",
+    "main.f8981b34.js.map": "/mntcr.git/static/js/main.f8981b34.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b78e5153.css",
+    "static/js/main.f8981b34.js"
+  ]
+}
