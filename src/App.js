@@ -11,7 +11,7 @@ import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <Routes>
+    <Routes basename={process.env.PUBLIC_URL}>
         <Route path='/' element={<IndexPage />}/>
         <Route path='/teachers' element={<TeachersNativos />}/>
         <Route path='/clases' element={<Clases />}/>
