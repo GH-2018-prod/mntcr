@@ -4,7 +4,7 @@ import './scss/styles.scss'
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/mntcr'>
       <AppRouter />
     </BrowserRouter>
   )
