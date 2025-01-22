@@ -52,7 +52,7 @@ export const TestimoniosContent = () => {
       </Row>
 
       <Row className='pb-4'>
-        <Col className='mb-5'>
+        <Col className='mb-5' id='ana-carvajal'>
           <h4 className='pb-3 text-center'>Dynamic and fun classes</h4>
           <p>
             The English classes with Jennifer are the best classes that I have taken in my life, I don’t exaggerate. She provides me material and tips for improve my pronunciation. Her classes are dynamic and we can practice with interesting topics. These classes help me to feel more confident and comfortable when speaking. Over the years in the classes, I have improved a lot my English skills and I will continue because the language is the key to the future.  If you have the opportunity the learn English, I would recommend Jennifer’s Classes, you will notice the difference.

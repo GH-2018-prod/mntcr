@@ -1,67 +1,122 @@
-import { Link } from "react-router-dom"
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import {
+  Box,
+  Grid,
+  GridItem,
+  Heading,
+  Text,
+  Button,
+  VStack,
+  Image,
+  HStack,
+  useBreakpointValue,
+  Link
+} from "@chakra-ui/react";
+import { testimonials, clients, WhoWeAre, WhyChooseUs, OurServices } from "./HomeGridInfo";
+import { product, productDescription } from "./HomeGridInfo";
+import { card } from "../../assets"
 
 export const HomeGrid = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   return (
-    <Container>
-      <Row>
-        <Col lg={4} md={6} className="mt-5 d-flex align-items-stretch">
-          <Card > 
-            {/*<Card.Img variant="top" src={HpTile1} />*/}
-            <Card.Body >
-              <Card.Title>Misión</Card.Title>
-              <Card.Text>
-                Nuestra misión es una en la que como profesores creemos con pasión y determinación. 
-              </Card.Text>
-              <Card.Text>
-               Nuestra misión se enfoca en poder brindar diferentes clases dependiendo de las necesidades y necesidades del estudiante y al mismo tiempo hacerlos sentir capaces de lograr su objetivo con el idioma inglés con confianza al aprender con hablantes nativos. 
-              </Card.Text>
-              <Link to="/teachers" className="text-decoration-underline">
-              <p >Leer mas</p> 
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="mt-5 d-flex align-items-stretch">
-          <Card >
-            {/*<Card.Img variant="top" src={HpTile1} />*/}
-            <Card.Body  >
-              <Card.Title>Visión</Card.Title>
-              <Card.Text>
-              Nuestra visión como academia y como profesionales es fomentar y proporcionar un ambiente cómodo y seguro donde nuestros estudiantes se sientan motivados y escuchados al aprender el idioma inglés. 
-              </Card.Text>
-              <Card.Text>
-              Nuestra academia brinda a los alumnos las habilidades y conocimientos necesarios para comunicarse y sentirse seguros al aplicar esto en el mundo real y sentirse orgullosos de cada paso del camino con su progreso aprendiendo con nuestra academia y nuestros profesores nativos.
-              </Card.Text>
-              <Link to="/testimonios" className="text-decoration-underline">
-              <Card.Text>
-              Leer mas
-              </Card.Text>
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col lg={4} md={6} className="mt-5 d-flex align-items-stretch">
-          <Card >
-            {/*<Card.Img variant="top" src={HpTile1} />*/}
-            <Card.Body >
-              <Card.Title>Valores</Card.Title>
-              <Card.Text >
-                Nuestros valores como academia se centran en la integridad, la aspiración y la compasión con nuestros estudiantes, ya que sabemos que todo es un viaje y queremos estar allí en cada paso para fortalecer y orientar adecuadamente en el viaje de cada estudiante con una nueva y divertida mejora perceptiva y desarrollando un nuevo lenguaje.
-              </Card.Text>
-              <Link to="/faqs" className="text-decoration-underline">
-              <Card.Text >
-                Leer mas
-              </Card.Text> 
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Box>
+      <Heading as="h1" color="#3574a5c7" fontSize={60} textAlign="center" mt={16} mb={8}>
+        Nuestra Empresa
+      </Heading>
+
+      {/* Highlight Section */}
+      <Box w="100%" py={8} bg="gray.50">
+        <Grid
+          templateColumns={{
+            base: "1fr",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          gap={6}
+          px={{ base: 4, md: 8, lg: 16 }}
+        >
+          <GridItem bg="white" p={6} shadow="md" borderRadius="md">
+            <WhoWeAre />
+          </GridItem>
+          <GridItem bg="white" p={6} shadow="md" borderRadius="md">
+            <OurServices />
+          </GridItem>
+          <GridItem bg="white" p={6} shadow="md" borderRadius="md">
+            <WhyChooseUs />
+          </GridItem>
+        </Grid>
+      </Box>
+
+      {/* Featured Products/Services */}
+      <Box w="100%" py={8} textAlign="center">
+        <Heading as="h2" size="lg" mt={6} mb={8}>
+          Productos Destacados
+        </Heading>
+        <Grid
+          templateColumns={{
+            base: "1fr",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          gap={6}
+          px={{ base: 4, md: 8, lg: 16 }}
+        >
+          {product.map((item, index) => (
+            <GridItem key={item} bg="white" p={6} shadow="md" borderRadius="md">
+              <Image
+                src={ card }
+                alt={`Producto ${item}`}
+                mb={4}
+                borderRadius="md"
+                _hover={{ transform: "scale(1.03)" }}
+                transition="transform 0.2s ease-in-out"
+              />
+              <Heading size="sm">{item}</Heading>
+              <Text mt={2}>{productDescription[index]}.</Text>
+              <Button mt={4} colorScheme="teal">
+                Ver Más
+              </Button>
+            </GridItem>
+          ))}
+        </Grid>
+      </Box>
+
+      {/* Testimonials */}
+      <Box w="100%" py={8} bg="gray.100" textAlign="center">
+        <Heading as="h2" size="lg" m={10}>
+          Lo Que Dicen Nuestros Clientes
+        </Heading>
+        <HStack
+          spacing={6}
+          px={{ base: 4, md: 8, lg: 16 }}
+          // overflowX={isMobile ? "scroll" : "hidden"}
+          overflowX="scroll"
+        >
+          {clients.map((cliente, index) => (
+            <Link
+              minW={{ base: "80%", md: "30%" }}
+              href="/testimonios"
+              _hover={{ transform: "scale(1.05)" }}
+              transition="transform 0.2s ease-in-out"
+            >
+              <VStack
+                key={cliente}
+                bg="white"
+                p={6}
+                shadow="md"
+                borderRadius="md"
+              >
+                <Text fontWeight="bold">
+                  " {cliente} "
+                </Text>
+                <Text fontStyle="italic">-
+                  {testimonials[index]}
+                </Text>
+              </VStack>
+            </Link>
+          ))}
+        </HStack>
+      </Box>
+    </Box>
   );
 }

@@ -27,6 +27,33 @@ header{
     margin: 0px 15px 0px 15px;
     font-weight: 600;
   }
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    transition: all 0.1s ease-in-out;
+  }
+  
+  .nav-link.active-link {
+    color: $brand-color;
+    font-weight: bold;
+    transform: scale(1.03);
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: $brand-color;
+    transition: width 0.1s ease-in-out;
+  }
+  
+  .nav-link.active-link::after {
+    width: 100%;
+  }
+  
 }
 //@media (min-width: 992px)
 @include media-breakpoint-down(lg) {
